@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>Welcome to the Name Game<h2>
+    <h3>Select Names Below<h3>
+    {% for x in people %}
+ 	<img data-answer="{{x}}" src="{{ url_for('static', filename = people[x]) }}"> </img>
+    {% endfor %} 
+    <br></br>
+    <form method="POST" action="/check">
+	    {% for x in people %}
+				<select name="{{x}}">
+				<option value="" disabled="disabled" selected="selected">Please select a name</option>
+				{% for x in people %}
+				  <option value="{{x}}">{{x}}</option>
+				{% endfor %} 
+				</select>
+	    {% endfor %} 
+	    <br></br>
+	    <input type="submit" value="Submit"></input>
+    </form>
+  </div>
+{% endblock %}
