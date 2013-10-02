@@ -1,14 +1,16 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 from dataprep import DataPrep 
 
 app = Flask(__name__)      
- 
+
 @app.route('/')
 def home():
-	#get pictures
-	data = DataPrep()
-	random_people = data.main() 
-	return render_template('home.html', people = random_people)
+	ans = request.args.get('submission')
+	if ans == None:
+		data.getNewPeople()
+		return render_template('home.html', people = data.current_random_people)
+	else:
+		return render_template('home.html', people = data.current_random_people, user_ans = ans)
 
 @app.route('/leaderboard')
 def leaderboard():
@@ -21,14 +23,18 @@ def about():
 @app.route('/check', methods = ["POST"])
 def check():
 	ans = request.form
-	correct = []
+	correct = ''
 	for item in ans:
 		if item == ans[item]:
-			correct.append("correct")
+			correct += 't'
 		else:
-			correct.append("incorrect")
-	
-	return str(correct)
+			correct += 'f'
+
+	return redirect(url_for('home', submission = correct))
+
+
+data = DataPrep()
+print data
 
 if __name__ == '__main__':
   app.run(debug=True)

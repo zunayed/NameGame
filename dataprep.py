@@ -3,8 +3,12 @@ from bs4 import BeautifulSoup
 class DataPrep(object):
 	"""docstring for DataPrep"""
 	def __init__(self):
-		pass
+		self.people_dictionary = self.getPeople()
+		self.current_random_people = self.main()
 		
+	def getNewPeople(self):
+		self.current_random_people = self.main()
+
 	def getPeople(self):
 		soup = BeautifulSoup(open('students.html'))
 		people = {}
@@ -16,36 +20,31 @@ class DataPrep(object):
 
 		return people
 
-	def random_element(self, dictionary):
+	def random_element(self):
 	    import random as r
-	    return dictionary[r.choice(dictionary.keys())]
+	    return self.people_dictionary[r.choice(self.people_dictionary.keys())]
 
-	def choose_random_elements(self, dictionary, n, choices=None):
+	def choose_random_elements(self, n, choices=None):
 	    if choices == None:
-	        return self.choose_random_elements(dictionary, n, [])
+	        return self.choose_random_elements(n, [])
 	    elif len(choices) == n:
 	        return choices
 	    else:
-	        element = self.random_element(dictionary)
+	        element = self.random_element()
 	        if element not in choices:
 	            choices.append(element)
-	        return self.choose_random_elements(dictionary, n, choices)
+	        return self.choose_random_elements(n, choices)
 
-	def output_html(self, dictionary, list):
+	def output(self, list):
 		random_people = {}
-		for item in dictionary:
+		for item in self.people_dictionary:
 			for random in list:
-				if dictionary[item] == random:
+				if self.people_dictionary[item] == random:
 					#print item
 					random_people[item] = random.split('/')[-1]
-					print random_people[item]
+					#print random_people[item]
 					
-		
 		return random_people
 
 	def main(self):
-		people = self.getPeople()
-		return self.output_html(people, self.choose_random_elements(people, 4))
-
-
-
+		return self.output(self.choose_random_elements(4))
