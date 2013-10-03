@@ -6,14 +6,16 @@ $('#checkButton').on('click', function(){
 		dictionary[$(el).attr("name")] = $(el).val()
 	})
 
-	console.log('button clicked')
 	$.post("/check", dictionary,function(response){
+		//$('#result').text(response)
 
-		$('#result').text(response)
+		$('img').each(function(index, el){
+			if(response['answers'][index]){
+				$(el).addClass('correct')
+			}else{
+				$(el).addClass('incorrect')
+			}
+		})
+
 	})
-
-
 })
-
-
-$('select').each(function(index, el) {console.log(index, $(el).val())})

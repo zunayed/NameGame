@@ -4,9 +4,9 @@
     <h3>Select Names Below</h3>
     <div class = "pictures">
         {% for x in people %}
-     	<img data-answer="{{x}}" src="{{ url_for('static', filename = people[x]) }}"> </img>
+     	<img id="{{x}}" src="{{ url_for('static', filename = people[x]) }}"> </img>
         {% endfor %} 
-        <p id='result'>/p>
+        <p id='result'>
     </div>
     <br></br>
     <div class="selector">

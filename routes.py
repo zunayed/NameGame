@@ -1,7 +1,10 @@
-from flask import Flask, render_template, request, url_for, redirect, Response
+from flask import Flask, render_template, request, url_for, redirect, jsonify
+from flask.ext.sqlalchemy import SQLAlchemy 
 from dataprep import DataPrep 
 
-app = Flask(__name__)      
+app = Flask(__name__)    
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://zunayed@localhost/testdb'  
+db = SQLAlchemy(app)
 
 @app.route('/')
 def home():
@@ -12,9 +15,9 @@ def home():
 	else:
 		return render_template('home.html', people = data.current_random_people, user_ans = ans)
 
-@app.route('/leaderboard')
+@app.route('/Statistics')
 def leaderboard():
-	return render_template('leaderboard.html')
+	return render_template('Statistics.html')
 
 @app.route('/about')
 def about():
@@ -23,14 +26,16 @@ def about():
 @app.route('/check', methods = ["POST"])
 def check():
 	ans = request.form
-	correct = ''
+	correct = []
 	for item in ans:
 		if item == ans[item]:
-			correct += 't'
+			correct.append(True)
 		else:
-			correct += 'f'
+			correct.append(False)
 
-	return Response(correct)
+
+
+	return jsonify(answers=correct)
 
 data = DataPrep()
 print data
