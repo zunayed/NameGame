@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, Response
 from dataprep import DataPrep 
 
 app = Flask(__name__)      
@@ -30,8 +30,7 @@ def check():
 		else:
 			correct += 'f'
 
-	return redirect(url_for('home', submission = correct))
-
+	return Response(correct)
 
 data = DataPrep()
 print data

@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <title>Name Game</title>    
   </head>
   <body>
@@ -23,6 +24,6 @@
       {% block content %}
       {% endblock %}
     </div>
-     
+     <script src="{{ url_for('static', filename='app.js') }}"></script>
   </body>
 </html>
