@@ -15,9 +15,9 @@ def home():
 	else:
 		return render_template('home.html', people = data.current_random_people, user_ans = ans)
 
-@app.route('/Statistics')
+@app.route('/stats')
 def leaderboard():
-	return render_template('Statistics.html')
+	return render_template('stats.html')
 
 @app.route('/about')
 def about():
