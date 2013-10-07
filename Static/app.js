@@ -7,7 +7,6 @@ $('#checkButton').on('click', function(){
 	})
 
 	$.post("/check", dictionary,function(response){
-		//$('#result').text(response)
 
 		$('img').each(function(index, el){
 			if(response['answers'][index]){
@@ -16,6 +15,9 @@ $('#checkButton').on('click', function(){
 				$(el).addClass('incorrect')
 			}
 		})
-
 	})
+})
+
+$('#morePeople').on('click', function(){
+	location.reload();
 })

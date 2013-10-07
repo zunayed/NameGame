@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 
 class DataPrep(object):
-	"""docstring for DataPrep"""
 	def __init__(self):
 		self.people_dictionary = self.getPeople()
 		self.current_random_people = self.main()
@@ -17,7 +16,7 @@ class DataPrep(object):
 			for person in batch.find_all(class_='person'):
 				for link in person.find_all(class_= 'profile-image'):
 					people[person.div.get_text()] = link.get('src')
-
+					
 		return people
 
 	def random_element(self):
