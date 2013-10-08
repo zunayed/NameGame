@@ -123,7 +123,7 @@ progress[value] {
 }
 
 progress[value]::-webkit-progress-value{
-  background-color: #F7464A;
+  background-color: #33CCFF;
 }
 
 input[id=checkButton], input[id=morePeople]

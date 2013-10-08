@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask.ext.sqlalchemy import SQLAlchemy 
 from sqlalchemy import create_engine
 
-
 from database import db, User 
 from dataprep import DataPrep 
 
