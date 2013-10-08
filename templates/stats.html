@@ -2,5 +2,12 @@
   
 {% block content %}
   <h2>Stats</h2>
-  <p>Show Stats</p>
+
+	{% for x in stats %}
+		{{x}} - Percentage right = {{stats[x]}}
+	  <progress value={{stats[x]}} max="100"></progress>
+	  <br></br>
+
+	{% endfor %} 
+ 
 {% endblock %}

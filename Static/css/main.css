@@ -103,12 +103,37 @@ h3 {
   text-decoration: none;
 }
 
-/*
- * selector
- */
-
 select {
-    padding: 50px;
+    padding: 10px;
     margin-right: 5px;
+
+/*    height: 28px;
+    padding-left:10px;
+    width: 191px;*/
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+
+  width: 900px;
+  height: 30px;
+}
+
+progress[value]::-webkit-progress-value{
+  background-color: #F7464A;
+}
+
+input[id=checkButton], input[id=morePeople]
+{
+    font-size: 1em;
+    background-color: #F7464A;
+    border:solid 1px #F7464A;
+    color: #fff;
+    height: 28px;
+    padding-left:10px;
+    width: 191px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
