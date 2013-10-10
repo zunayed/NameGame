@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from database import db 
+from database import db
 from database import User
 
 def getPeople():
@@ -13,12 +13,9 @@ def getPeople():
 				student = User(person.div.get_text(), link.get('src').split('/')[-1])
 				db.session.add(student)
 				db.session.commit()
-				# print person.div.get_text()
-				# img_link = link.get('src').split('/')[-1]
+
 	return people
 
-
-db.create_all()
 people_dictionary = getPeople()
 
 

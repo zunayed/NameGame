@@ -1,6 +1,29 @@
 {% extends "layout.html" %}
-  
+ 
 {% block content %}
-  <h2>About</h2>
-  <p>This is an About page for the app ToDo - link to github and show commits.</p>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}"> 
+	<h2>About</h2>
+	<p>This is an About page for the app. If you have any questions you can use this form to contact me</p>
+	
+	{% for message in get_flashed_messages() %}
+  		<div class="flash">{{ message }}</div>
+	{% endfor %}
+
+	<form method="POST" action="/about">
+	    {{ form.hidden_tag() }}
+
+	    {{ form.name.label }} 
+	    {{ form.name(size=20) }}
+
+	    {{ form.email.label }} 
+	    {{ form.email(size=30) }}
+
+		{{ form.subject.label }}
+		{{ form.subject }}
+
+		{{ form.message.label }}
+		{{ form.message }}
+	    <input type="submit" value="Send">
+	</form>
+
 {% endblock %}
