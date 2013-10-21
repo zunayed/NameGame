@@ -1,31 +1,34 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<div class="content">
   <div class="jumbo">
     <h3>Select Names Below</h3>
     <div class = "pictures">
         {% for x in people %}
      	<img id="{{x}}" src="{{ url_for('static', filename = people[x]) }}"> </img>
         {% endfor %} 
-        <p id='result'>
+        <!-- <p id='result'> -->
     </div>
     <br></br>
-    <div class="selector">
+      <div class="selector">
 
-	    {% for x in people %}
-				<select name="{{x}}">
-				<option value="" disabled="disabled" selected="selected">Please select a name</option>
+  	    {% for x in people %}
+  				<select name="{{x}}">
+  				<option value="" disabled="disabled" selected="selected">Please select a name</option>
 
-				{% for x in shuffled_names %}
-				  <option value="{{x}}">{{x}}</option>
-				{% endfor %} 
+  				{% for x in shuffled_names %}
+  				  <option value="{{x}}">{{x}}</option>
+  				{% endfor %} 
 
-				</select>
-	    {% endfor %} 
-
+  				</select>
+  	    {% endfor %} 
+      </div>
 	    <br></br>
-	    <input id="checkButton" type="submit" value="Check"></input>
+      <div class = "button">
+  	    <input id="checkButton" type="submit" value="Check"></input>
         <input id="morePeople" type="submit" value="Get More People"></input>
-    </div>
+      </div>
   </div>
+</div>
 {% endblock %}

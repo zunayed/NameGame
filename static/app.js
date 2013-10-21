@@ -1,8 +1,7 @@
 $('#checkButton').on('click', function(){
-
-	var dictionary = {}
 	$('#checkButton').hide();
-
+	var dictionary = {}
+	
 	$('select').each(function(index, el){
 		dictionary[$(el).attr("name")] = $(el).val()
 	})

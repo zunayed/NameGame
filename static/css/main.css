@@ -1,24 +1,16 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #444;
-}
- 
-/*
- * Create dark grey header with a white logo
- */
-  
 header {
   background-color: #F7464A;
   height: 50px;
   width: 100%;
   opacity: .9;
   margin-bottom: 10px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
  
 header h1.logo {
-  margin: 0;
+  margin: 0 auto; 
   font-size: 2.7em;
   color: #fff;
   text-transform: uppercase;
@@ -44,39 +36,41 @@ header h1.logo:hover {
   color: #fff;
   text-decoration: none;
 }
- 
+
 /*
- * Center the body content
+ * Display navigation links inline
  */
-  
-.container {
+.staticmenu {
+
   width: 940px;
   margin: 0 auto;
 }
- 
-div.jumbo {
-  padding: 10px 0 30px 0;
-  background-color: #eeeeee;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-}
 
-div.pictures{
-  text-align: center;
+.menu {
+  float: right;
 }
  
-div.selector{
-  text-align: center;
+.menu li {
+  display: inline;
+  margin-right: 5px;
+  margin-left: 35px;
 }
 
-.correct{
-  border: 5px solid green;
-
+.menu li a {
+  color: #fff;
+  text-decoration: none;
 }
 
-.incorrect{
-  border: 5px solid red;
+/*
+ * Center the body content
+ */
+
+body {
+  margin: 0;
+  margin-top: 50px;
+  /*padding: 0;*/
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
 }
 
 h2 {
@@ -96,37 +90,53 @@ h3 {
   color: #999;
 }
 
+div.jumbo {
+  padding: 10px 0 30px 0;
+  background-color: #eeeeee;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.content {
+    /*margin-top: 100px;*/
+    float: center;
+    position:relative;
+    width: 940px;
+    margin: 0 auto;
+    /*top: 100px;*/
+
+}
+
 /*
- * Display navigation links inline
+ * pictures, selector and error checking
  */
- 
-.menu {
-  float: right;
-  margin-top: 16px;
+
+div.pictures{
+  text-align: center;
 }
  
-.menu li {
-  display: inline;
-}
- 
-.menu li + li {
-  margin-left: 35px;
-}
- 
-.menu li a {
-  color: #fff;
-  text-decoration: none;
+div.selector{
+  text-align: center;
 }
 
-select {
-    padding: 10px;
-    margin-right: 5px;
+.correct{
+  border: 5px solid green;
 
-/*    height: 28px;
-    padding-left:10px;
-    width: 191px;*/
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.incorrect{
+  border: 5px solid red;
+}
+
+.button {
+  text-align: center;
+
+}
+
+/*
+ * progress bar
+ */
 
 progress[value] {
   /* Reset the default appearance */

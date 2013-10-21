@@ -1,14 +1,15 @@
 from flask import Flask, render_template, request, url_for, redirect, jsonify, flash
-from flask.ext.sqlalchemy import SQLAlchemy 
+from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 
 import random
-from database import db, User 
-from dataprep import DataPrep 
+from database import db, User
+from dataprep import DataPrep
 from form import ContactForm
 
-app = Flask(__name__)    
+app = Flask(__name__)
 app.secret_key = 'development key'
+data = DataPrep()
 
 @app.route('/')
 def home():
@@ -26,7 +27,7 @@ def stats():
 	students = User.query.all()
 	student_stats = {}
 	for student in students:
-		total_plays = student.incorrect_picks + student.correct_picks + 1 
+		total_plays = student.incorrect_picks + student.correct_picks + 1
 		percentage = (float(student.correct_picks) / total_plays) * 100
 		student_stats[student.username] = round(percentage, 0)
 
@@ -70,8 +71,6 @@ def modifyDatabase(student, ans):
 		student.incorrect_picks += 1
 	db.session.add(student)
 	db.session.commit()
-
-data = DataPrep()
 
 if __name__ == '__main__':
   app.run(debug=True)

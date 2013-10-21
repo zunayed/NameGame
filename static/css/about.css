@@ -1,4 +1,11 @@
 /* Contact form */
+body {
+  margin-top: 50px;
+  margin-left: 50px
+  /*padding: 0;*/
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+}
 form label {
   font-size: 1.2em;
   font-weight: bold;
@@ -37,7 +44,7 @@ form input[type="submit"] {
   background-color: #F7464A;
   border:solid 1px #F7464A;
   color: #fff;
-  height: 28px;
+  height: 35px;
   padding-left:10px;
   width: 191px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

@@ -1,13 +1,14 @@
 {% extends "layout.html" %}
-  
+
 {% block content %}
-  <h2>Stats</h2>
-
-	{% for x in stats %}
-		{{x}} - Percentage right = {{stats[x]}}
-	  <progress value={{stats[x]}} max="100"></progress>
-	  <br></br>
-
-	{% endfor %} 
- 
+<body>
+	<div class="content">
+	  <h2>Stats</h2>
+		{% for x in stats %}
+			{{x}} - Percentage right = {{stats[x]}}
+		  <progress value={{stats[x]}} max="100"></progress>
+		  <br></br>
+		{% endfor %} 
+	</div>
+</body>
 {% endblock %}
